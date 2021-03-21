@@ -1,0 +1,67 @@
+{% include "header.html" %}
+
+<div class="title">
+        <h1>I'm Ananya,</h1>
+        <br>
+        <p class="side-line">Welcome to my portfolio!</p>
+</div>
+<br>
+<br>
+<div class="projects-container">
+        <div class="container-fluid">
+                <h2><strong>Projects</strong></h2>
+                <br>
+                <h3><strong>Console Based</strong></h3>
+                <br>
+                <div class="row">
+                        {% for project in projects: %}
+                        <div class="project col-lg-4 col-md-6 col-sm-6">
+                                <img src="{{ project['project_img'] }}">
+                                <br>
+                                <br>
+                                <a class="project-heading" href="{{ project['project_link'] }}"><strong>{{ project['project_name'] }}</strong></a>
+                                <p><strong>{{ project['project_des'] }}</strong></p>
+                        </div>
+                        {% endfor %}
+                </div>
+                <h3><strong>Flask Websites</strong></h3>
+                <br>
+                <div class="row">
+                        {% for website in websites: %}
+                        <div class="project col-lg-4 col-md-6 col-sm-6">
+                                <img src="{{ website['project_img'] }}">
+                                <br>
+                                <br>
+                                <a class="project-heading" href="{{ website['project_link'] }}"><strong>{{ website['project_name'] }}</strong></a>
+                                <p><strong>{{ website['project_des'] }}</strong></p>
+                        </div>
+                        {% endfor %}
+                </div>
+        </div>
+</div>
+
+<br>
+<br>
+<hr>
+<div class="input-container">
+<h2><strong>Comments</strong></h2>
+<br>
+<br>
+<form action="/" method="post">
+        <input name="name" type="text"  class="form-control" placeholder="Your Name" />
+        <br>
+        <textarea name="comment" rows="9" cols="70" class="form-control" placeholder="Your Comment"></textarea>
+        <br>
+        <button type="submit" class="btn btn-info">ADD COMMENT</button>
+</form>
+</div>
+<br>
+{% for comment in comments: %}
+<div class="comment-container">
+        <h2><strong>{{ comment['name'] }}</strong></h2>
+        <p><strong>{{ comment['comment'] }}</strong></p>
+</div>
+<br>
+{% endfor %}
+
+{% include "footer.html" %}
